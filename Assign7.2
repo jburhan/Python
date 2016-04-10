@@ -1,0 +1,15 @@
+fname = raw_input("What is your file name, babe?")
+fhand = open(fname)
+count = 0
+sum = 0
+for line in fhand:
+    line = line.rstrip()
+    if not line.startswith("X-DSPAM-Confidence:") :
+		continue
+    count = count + 1
+    fline = float(line[20:])
+    num = [fline]
+    for i in num:
+    	sum = sum + i
+avg = sum/count
+print "Average spam confidence:",avg
