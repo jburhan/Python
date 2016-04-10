@@ -1,0 +1,11 @@
+import re
+fhand = open('regex_sum_211624.txt')
+sum = 0
+for line in fhand:
+    line = line.rstrip()
+    snum = re.findall('([0-9]+)', line)
+    snum = map(int, snum)
+    for i in snum:
+        sum = sum + i
+print sum
+        
