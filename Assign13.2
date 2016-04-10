@@ -1,0 +1,23 @@
+import urllib
+import ssl
+from BeautifulSoup import *
+
+url = raw_input('Enter URL : ')
+pos = raw_input('Enter position : ')
+counts = raw_input('Enter count : ')
+
+scontext = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
+html = urllib.urlopen(url, context=scontext)
+data = html.read()
+soup = BeautifulSoup(data)
+
+# Retrieve all of the anchor tags
+tags = soup('a')
+
+links = list()
+
+for tag in tags:
+    links.append(tag.get('href', None))
+
+print 'Retrieving: ', links[0]
+print 'Retrieving: ', links[int(pos)-1]
